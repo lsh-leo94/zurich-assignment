@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import PrivateRoute  from './components/auth/PrivateRoute';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Dashboard from './routes/Dashboard'
+import Login from './routes/auth/login'
+import Unauthorized from './routes/error/unauthorized'
 
-function App() {
+
+const App = () => {
+  const router = createBrowserRouter([
+    {
+      path: '/login',
+      element: <Login />,
+    },
+    {
+      path: '/unauthorized',
+      element: <Unauthorized />,
+    },
+    {
+      path: "/",
+      element: <PrivateRoute />,
+      children:[{
+        path: 'dashboard',
+        element: <Dashboard />
+      }]
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider
+      router={router}
+    />
   );
 }
 
