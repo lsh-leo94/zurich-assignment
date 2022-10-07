@@ -8,7 +8,7 @@ const PrivateRoute = () => {
     const { auth } = useSelector((state) => state);
   
     if (!auth?.user_token || !auth?.user_id) {
-        return <Navigate to="/login" />
+        return <Navigate to="/unauthorized" />
     }
 
     // authorized so return child components

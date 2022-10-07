@@ -11,10 +11,6 @@ const Dashboard = () => {
   const [ userList, setUserList] = useState({});
 
   useEffect(() => {
-    dispatch(resetToInitial());
-  }, [])
-
-  useEffect(() => {
     if(users?.fetchNextPage){
       dispatch(getUserList(users?.fetchNextPage));
     }
@@ -35,9 +31,10 @@ const Dashboard = () => {
     <div>
       Dashboard
       <Button onClick={() => {
+        dispatch(resetToInitial())
         dispatch(getUserList(1))
       }}>Get User</Button>
-      {console.log(userList)}
+     
       <Table
         dataSource={userList.length ? userList : []}
         columns={userColumn}

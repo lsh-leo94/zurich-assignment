@@ -3,10 +3,11 @@ import { Input, Button } from 'antd';
 import { login } from '../../reducers/authReducer'
 import { useDispatch } from 'react-redux';
 import Helmet from 'react-helmet';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogin = () => {
     dispatch(login())
@@ -31,7 +32,6 @@ const Login = () => {
       </div>
       <div>
         <Button onClick={() => handleLogin()}>Login</Button>
-        <Button>Sign Up</Button>
         <Button onClick={() => { navigate('/dashboard') }}>Go to home</Button>
         
       </div>
