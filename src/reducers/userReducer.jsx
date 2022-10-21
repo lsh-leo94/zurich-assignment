@@ -22,8 +22,7 @@ const userSlice = createSlice({
     [getUserList.fulfilled]: (state, action) => {
       return {
         ...state,
-        users: [...state?.users, ...action.payload?.data],
-        fetchNextPage: action.payload?.fetchNextPage,
+        users: [ ...action.payload?.data],
         loading: !action.payload?.fetchNextPage
       }
     },
